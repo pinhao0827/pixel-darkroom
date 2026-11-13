@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放大或縮小明暗差距，找出讓畫面有層次的對比範圍。">
+  <meta name="theme-color" content="#11100f">
+  <title>對比｜像素暗房</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <script defer src="../../assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-header"><div class="wrap bar">
+    <a class="brand" href="../../index.html"><span class="brand-mark" aria-hidden="true"></span>像素暗房</a>
+    <a class="muted header-link" href="../../index.html#notes">筆記目錄</a>
+  </div></header>
+  <main id="main" class="wrap">
+    <a class="back" href="../../index.html#notes">← 回筆記目錄</a>
+    <header class="article-header">
+      <p class="eyebrow mono">Contrast / 光線</p>
+      <h1>對比</h1>
+      <p class="description">放大或縮小明暗差距，找出讓畫面有層次的對比範圍。</p>
+    </header>
+    <section class="lab" data-lab="contrast" aria-labelledby="lab-title">
+      <figure>
+        <img src="../../assets/rainy-alley.jpg" alt="雨夜巷弄，紅燈籠和店內暖光倒映在濕地上。" width="1536" height="1024">
+        <figcaption><span>雨夜巷弄</span><span>AI 生成練習影像</span></figcaption>
+      </figure>
+      <div class="controls">
+        <h2 id="lab-title">動手比較</h2>
+        <div class="filters" role="group" aria-label="比較影像">
+          <button type="button" data-view="original" aria-pressed="false">原圖</button>
+          <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
+        </div>
+        <div class="slider-line"><label for="setting">對比</label><output for="setting">135%</output></div>
+        <input id="setting" type="range" min="55" max="160" value="135">
+        <p class="muted baseline">原圖基準 100%</p>
+        <button type="button" data-reset>重設</button>
+        <noscript><p>啟用 JavaScript 即可調整影像。</p></noscript>
+      </div>
+    </section>
+    <div class="reading">
+      <section><h2>原理</h2><p>對比調高時，偏亮的地方更亮，偏暗的地方更暗。對比調低時，兩者更接近中間亮度，黑色看起來偏灰。這個練習可以用窗邊亮面和緊鄰的暗處觀察變化。</p></section>
+      <section><h2>三步練習</h2><ol><li>先降低對比，再慢慢拉過 100%。</li><li>比較店面玻璃周圍的暗處和路面的亮色倒影。</li><li>在原圖與調整間切換，找出倒影醒目、牆面仍有紋理的區間。</li></ol></section>
+      <section class="takeaway"><h2>帶走一個觀察</h2><p>檢查相鄰的亮面與暗面。如果輪廓更清楚但紋理一起不見，可以試著把數值往回收。</p></section>
+    </div>
+    <nav class="adjacent" aria-label="其他筆記">
+      <a href="../../notes/brightness/index.html"><small>← 上一篇</small>亮度</a>
+      <a href="../../notes/color-saturation/index.html"><small>下一篇 →</small>飽和度</a>
+    </nav></main>
+  <footer class="site-footer"><div class="wrap bar"><span>像素暗房</span><span class="mono">PIXEL DARKROOM</span></div></footer>
+</body>
+</html>
