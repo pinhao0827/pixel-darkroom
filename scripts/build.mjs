@@ -134,7 +134,7 @@ function article(note, index) {
     <div class="reading">
       <section><h2>原理</h2><p>${e(note.concept)}</p></section>
       <section><h2>三步練習</h2><ol>${note.steps.map(step => `<li>${e(step)}</li>`).join('')}</ol></section>
-      <section class="takeaway"><h2>帶走一個觀察</h2><p>${e(note.takeaway)}</p></section>
+      <section class="takeaway"><h2>下次修圖時</h2><p>${e(note.takeaway)}</p></section>
     </div>
     <nav class="adjacent" aria-label="其他筆記">
       ${adjacent(notes[index - 1], '← 上一篇')}
@@ -148,6 +148,7 @@ for (const asset of ['style.css', 'app.js', 'rainy-alley.jpg']) {
   files.set('assets/' + asset, readFileSync(root + 'assets/' + asset));
 }
 
+// 刪掉舊的產物，免得移除一篇筆記後，舊網址還看得到它。
 const docs = root + 'docs/';
 const extras = existsSync(docs)
   ? readdirSync(docs, { recursive: true, withFileTypes: true })
