@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="從灰階到濃烈色彩，觀察紅燈籠與藍灰牆面如何改變。">
-  <meta name="theme-color" content="#11100f">
+  <meta name="theme-color" content="#f8f7f3">
   <title>飽和度｜修圖練習室</title>
   <link rel="stylesheet" href="../../assets/style.css">
   <script defer src="../../assets/app.js"></script>
@@ -18,7 +18,7 @@
   <main id="main" class="wrap">
     <a class="back" href="../../index.html#notes">← 回筆記目錄</a>
     <header class="article-header">
-      <p class="eyebrow mono">Saturation / 色彩</p>
+      <p class="eyebrow">Saturation / 色彩</p>
       <h1>飽和度</h1>
       <p class="description">從灰階到濃烈色彩，觀察紅燈籠與藍灰牆面如何改變。</p>
     </header>
@@ -26,25 +26,38 @@
       <div class="lab-photos">
         <figure data-practice-photo="rainy-alley.jpg">
     <img src="../../assets/rainy-alley.jpg" alt="下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。" width="1536" height="1024">
-    <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
+    <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成</span></figcaption>
   </figure><figure data-practice-photo="sunny-fruit-stall.jpg" hidden>
     <img src="../../assets/sunny-fruit-stall.jpg" alt="陽光照在柳橙和火龍果上，葉子的影子落在藍綠色木窗上。" width="1536" height="1024">
-    <figcaption><span>陽光照在水果、竹籃和木窗上</span><span>AI 生成練習影像</span></figcaption>
+    <figcaption><span>陽光照在水果、竹籃和木窗上</span><span>AI 生成</span></figcaption>
   </figure>
       </div>
       <div class="controls">
         <h2 id="lab-title">動手比較</h2>
-        <div class="filters photo-options" role="group" aria-label="選擇練習照片">
-          <button type="button" data-photo="rainy-alley.jpg" aria-pressed="true">雨中的紅燈籠</button><button type="button" data-photo="sunny-fruit-stall.jpg" aria-pressed="false">陽光下的水果攤</button>
+        <div class="control-group">
+          <p class="control-label" id="photo-label">選照片</p>
+          <div class="filters" role="group" aria-labelledby="photo-label">
+            <button type="button" data-photo="rainy-alley.jpg" aria-pressed="true">雨中的紅燈籠</button><button type="button" data-photo="sunny-fruit-stall.jpg" aria-pressed="false">陽光下的水果攤</button>
+          </div>
         </div>
-        <div class="filters" role="group" aria-label="比較影像">
-          <button type="button" data-view="original" aria-pressed="false">原圖</button>
-          <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
+        <div class="control-group">
+          <p class="control-label" id="compare-label">比較前後</p>
+          <div class="filters" role="group" aria-labelledby="compare-label">
+            <button type="button" data-view="original" aria-pressed="false">原圖</button>
+            <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
+          </div>
         </div>
-        <div class="slider-line"><label for="setting">飽和度</label><output for="setting">150%</output></div>
-        <input id="setting" type="range" min="0" max="180" value="150">
-        <p class="muted baseline">原圖基準 100%</p>
-        <button type="button" data-reset>重設</button>
+        <div class="control-group">
+          <div class="slider-line">
+            <label for="setting">飽和度</label>
+            <output for="setting">150%</output>
+          </div>
+          <input id="setting" type="range" min="0" max="180" value="150">
+          <div class="control-footer">
+            <p class="muted baseline">100% 是原圖</p>
+            <button type="button" data-reset>重設</button>
+          </div>
+        </div>
         <noscript><p>啟用 JavaScript 即可調整影像。</p></noscript>
       </div>
     </section>
@@ -57,6 +70,6 @@
       <a href="../../notes/contrast/index.html"><small>← 上一篇</small>對比</a>
       <span></span>
     </nav></main>
-  <footer class="site-footer"><div class="wrap bar"><span>修圖練習室</span><span class="mono">PHOTO EDITING LAB</span></div></footer>
+  <footer class="site-footer"><div class="wrap bar"><span>修圖練習室</span><a class="header-link" href="../../index.html#notes">瀏覽筆記</a></div></footer>
 </body>
 </html>
