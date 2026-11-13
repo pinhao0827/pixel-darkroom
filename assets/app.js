@@ -28,6 +28,7 @@ if (lab) {
 
   function render() {
     const value = Number(slider.value);
+    // 這兩種濾鏡的滑桿顯示保留多少原圖，CSS 要的是套用多少效果。
     const amount = ['grayscale', 'sepia'].includes(filter) ? 100 - value : value;
     image.style.filter = original ? 'none' : filter + '(' + amount + '%)';
     output.value = value + '%';
