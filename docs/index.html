@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="給修圖初學者的互動筆記。">
+  <meta name="theme-color" content="#11100f">
+  <title>像素暗房｜影像練習筆記</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <script defer src="./assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-header"><div class="wrap bar">
+    <a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"></span>像素暗房</a>
+    <a class="muted header-link" href="./index.html#notes">筆記目錄</a>
+  </div></header>
+  <main id="main" class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow mono">PIXEL DARKROOM</p>
+        <h1>像素暗房<span>.</span></h1>
+        <p class="intro">一張照片，多種觀看方式。</p>
+        <p class="description">給修圖初學者的互動筆記。拖動滑桿，從亮度、對比和色彩，慢慢看懂同一張影像。</p>
+        <a class="primary" href="#notes">探索筆記 <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="hero-photo">
+        <img src="./assets/rainy-alley.jpg" alt="雨夜巷弄，紅燈籠和店內暖光倒映在濕地上。" width="1536" height="1024">
+        <figcaption><span>雨夜巷弄</span><span>AI 生成練習影像</span></figcaption>
+      </figure>
+    </section>
+    <section id="notes" class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-head">
+        <h2 id="catalog-title">練習筆記</h2>
+        <p id="result-count" aria-live="polite">3 篇筆記</p>
+      </div>
+      <div class="filters" role="group" aria-label="筆記分類">
+        <button type="button" data-category-filter="" aria-pressed="true">全部</button>
+        <button type="button" data-category-filter="光線" aria-pressed="false">光線</button><button type="button" data-category-filter="色彩" aria-pressed="false">色彩</button>
+      </div>
+      <div class="card-grid">
+        <article class="card" data-category="光線">
+          <p class="eyebrow mono">Brightness <span> / </span> 光線</p>
+          <h3><a href="./notes/brightness/index.html">亮度<span aria-hidden="true">↗</span></a></h3>
+          <p class="description">讓整張影像變亮或變暗，觀察陰影與高光一起變化時，哪些細節先消失。</p>
+        </article><article class="card" data-category="光線">
+          <p class="eyebrow mono">Contrast <span> / </span> 光線</p>
+          <h3><a href="./notes/contrast/index.html">對比<span aria-hidden="true">↗</span></a></h3>
+          <p class="description">放大或縮小明暗差距，找出讓畫面有層次的對比範圍。</p>
+        </article><article class="card" data-category="色彩">
+          <p class="eyebrow mono">Saturation <span> / </span> 色彩</p>
+          <h3><a href="./notes/color-saturation/index.html">飽和度<span aria-hidden="true">↗</span></a></h3>
+          <p class="description">從灰階到濃烈色彩，觀察紅燈籠與藍灰牆面如何改變。</p>
+        </article>
+      </div>
+    </section></main>
+  <footer class="site-footer"><div class="wrap bar"><span>像素暗房</span><span class="mono">PIXEL DARKROOM</span></div></footer>
+</body>
+</html>
