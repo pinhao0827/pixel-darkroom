@@ -23,12 +23,20 @@
       <p class="description">從灰階到濃烈色彩，觀察紅燈籠與藍灰牆面如何改變。</p>
     </header>
     <section class="lab" data-lab="saturate" aria-labelledby="lab-title">
-      <figure>
-        <img src="../../assets/rainy-alley.jpg" alt="下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。" width="1536" height="1024">
-        <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
-      </figure>
+      <div class="lab-photos">
+        <figure data-practice-photo="rainy-alley.jpg">
+    <img src="../../assets/rainy-alley.jpg" alt="下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。" width="1536" height="1024">
+    <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
+  </figure><figure data-practice-photo="sunny-fruit-stall.jpg" hidden>
+    <img src="../../assets/sunny-fruit-stall.jpg" alt="陽光照在柳橙和火龍果上，葉子的影子落在藍綠色木窗上。" width="1536" height="1024">
+    <figcaption><span>陽光照在水果、竹籃和木窗上</span><span>AI 生成練習影像</span></figcaption>
+  </figure>
+      </div>
       <div class="controls">
         <h2 id="lab-title">動手比較</h2>
+        <div class="filters photo-options" role="group" aria-label="選擇練習照片">
+          <button type="button" data-photo="rainy-alley.jpg" aria-pressed="true">雨中的紅燈籠</button><button type="button" data-photo="sunny-fruit-stall.jpg" aria-pressed="false">陽光下的水果攤</button>
+        </div>
         <div class="filters" role="group" aria-label="比較影像">
           <button type="button" data-view="original" aria-pressed="false">原圖</button>
           <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
@@ -42,7 +50,7 @@
     </section>
     <div class="reading">
       <section><h2>原理</h2><p>飽和度描述色彩看起來有多濃。這個控制項降至 0% 時，影像變成灰階。提高時，燈籠紅色和牆面的冷色都可能變得更強，原本有層次的區域也可能變得過於刺眼。</p></section>
-      <section><h2>三步練習</h2><ol><li>把飽和度拉到 0%，再慢慢拉過 100%。</li><li>觀察紅色倒影與藍灰牆面哪一處更容易吸引視線。</li><li>切回原圖，選一個能凸顯主體又保留環境氣氛的數值。</li></ol></section>
+      <section><h2>三步練習</h2><ol><li>把飽和度拉到 0%，再慢慢拉過 100%。</li><li>觀察紅色倒影與藍灰牆面哪一處更容易吸引視線。</li><li>切回原圖，選一個能凸顯主體又保留環境氣氛的數值。 換到水果攤，用同一個數值看看柳橙和火龍果的顏色。</li></ol></section>
       <section class="takeaway"><h2>下次修圖時</h2><p>先決定希望讀者看哪裡，再調整色彩強度。背景的飽和度也會影響視線。</p></section>
     </div>
     <nav class="adjacent" aria-label="其他筆記">
