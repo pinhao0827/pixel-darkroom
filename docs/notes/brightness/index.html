@@ -23,12 +23,20 @@
       <p class="description">讓整張影像變亮或變暗，觀察陰影與高光一起變化時，哪些細節先消失。</p>
     </header>
     <section class="lab" data-lab="brightness" aria-labelledby="lab-title">
-      <figure>
-        <img src="../../assets/rainy-alley.jpg" alt="下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。" width="1536" height="1024">
-        <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
-      </figure>
+      <div class="lab-photos">
+        <figure data-practice-photo="rainy-alley.jpg">
+    <img src="../../assets/rainy-alley.jpg" alt="下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。" width="1536" height="1024">
+    <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
+  </figure><figure data-practice-photo="sunny-fruit-stall.jpg" hidden>
+    <img src="../../assets/sunny-fruit-stall.jpg" alt="陽光照在柳橙和火龍果上，葉子的影子落在藍綠色木窗上。" width="1536" height="1024">
+    <figcaption><span>陽光照在水果、竹籃和木窗上</span><span>AI 生成練習影像</span></figcaption>
+  </figure>
+      </div>
       <div class="controls">
         <h2 id="lab-title">動手比較</h2>
+        <div class="filters photo-options" role="group" aria-label="選擇練習照片">
+          <button type="button" data-photo="rainy-alley.jpg" aria-pressed="true">雨中的紅燈籠</button><button type="button" data-photo="sunny-fruit-stall.jpg" aria-pressed="false">陽光下的水果攤</button>
+        </div>
         <div class="filters" role="group" aria-label="比較影像">
           <button type="button" data-view="original" aria-pressed="false">原圖</button>
           <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
@@ -42,7 +50,7 @@
     </section>
     <div class="reading">
       <section><h2>原理</h2><p>亮度控制會整體放大或縮小影像的色彩數值。往上拉時，暗部可能更容易辨認，燈籠的亮部卻可能先變成一片。往下拉時，巷口的陰影會先變得難以分辨。</p></section>
-      <section><h2>三步練習</h2><ol><li>把亮度從 100% 慢慢拉到 145%。</li><li>在左側牆面找紋理，再看右上方燈籠的紙紋是否仍能分辨。</li><li>切回原圖，記下你開始看不清燈籠紋理的時刻。</li></ol></section>
+      <section><h2>三步練習</h2><ol><li>把亮度從 100% 慢慢拉到 145%。</li><li>在左側牆面找紋理，再看右上方燈籠的紙紋是否仍能分辨。</li><li>切回原圖，記下你開始看不清燈籠紋理的時刻。 接著切到水果攤，用同樣的亮度看遮陽布上的紋路。</li></ol></section>
       <section class="takeaway"><h2>下次修圖時</h2><p>提亮夜景時，分別看最暗和最亮的區域。看得清陰影也要看得見亮部的層次。</p></section>
     </div>
     <nav class="adjacent" aria-label="其他筆記">
