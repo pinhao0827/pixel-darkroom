@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="從灰階到濃烈色彩，觀察紅燈籠與藍灰牆面如何改變。">
+  <meta name="theme-color" content="#11100f">
+  <title>飽和度｜像素暗房</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <script defer src="../../assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-header"><div class="wrap bar">
+    <a class="brand" href="../../index.html"><span class="brand-mark" aria-hidden="true"></span>像素暗房</a>
+    <a class="muted header-link" href="../../index.html#notes">筆記目錄</a>
+  </div></header>
+  <main id="main" class="wrap">
+    <a class="back" href="../../index.html#notes">← 回筆記目錄</a>
+    <header class="article-header">
+      <p class="eyebrow mono">Saturation / 色彩</p>
+      <h1>飽和度</h1>
+      <p class="description">從灰階到濃烈色彩，觀察紅燈籠與藍灰牆面如何改變。</p>
+    </header>
+    <section class="lab" data-lab="saturate" aria-labelledby="lab-title">
+      <figure>
+        <img src="../../assets/rainy-alley.jpg" alt="雨夜巷弄，紅燈籠和店內暖光倒映在濕地上。" width="1536" height="1024">
+        <figcaption><span>雨夜巷弄</span><span>AI 生成練習影像</span></figcaption>
+      </figure>
+      <div class="controls">
+        <h2 id="lab-title">動手比較</h2>
+        <div class="filters" role="group" aria-label="比較影像">
+          <button type="button" data-view="original" aria-pressed="false">原圖</button>
+          <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
+        </div>
+        <div class="slider-line"><label for="setting">飽和度</label><output for="setting">150%</output></div>
+        <input id="setting" type="range" min="0" max="180" value="150">
+        <p class="muted baseline">原圖基準 100%</p>
+        <button type="button" data-reset>重設</button>
+        <noscript><p>啟用 JavaScript 即可調整影像。</p></noscript>
+      </div>
+    </section>
+    <div class="reading">
+      <section><h2>原理</h2><p>飽和度描述色彩看起來有多濃。這個控制項降至 0% 時，影像變成灰階。提高時，燈籠紅色和牆面的冷色都可能變得更強，原本有層次的區域也可能變得過於刺眼。</p></section>
+      <section><h2>三步練習</h2><ol><li>把飽和度拉到 0%，再慢慢拉過 100%。</li><li>觀察紅色倒影與藍灰牆面哪一處更容易吸引視線。</li><li>切回原圖，選一個能凸顯主體又保留環境氣氛的數值。</li></ol></section>
+      <section class="takeaway"><h2>帶走一個觀察</h2><p>先決定希望讀者看哪裡，再調整色彩強度。背景的飽和度也會影響視線。</p></section>
+    </div>
+    <nav class="adjacent" aria-label="其他筆記">
+      <a href="../../notes/contrast/index.html"><small>← 上一篇</small>對比</a>
+      <span></span>
+    </nav></main>
+  <footer class="site-footer"><div class="wrap bar"><span>像素暗房</span><span class="mono">PIXEL DARKROOM</span></div></footer>
+</body>
+</html>
