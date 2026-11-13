@@ -59,20 +59,20 @@ const page = (prefix, title, description, content) => `<!doctype html>
 <body>
   <a class="skip" href="#main">跳到主要內容</a>
   <header class="site-header"><div class="wrap bar">
-    <a class="brand" href="${prefix}index.html"><span class="brand-mark" aria-hidden="true"></span>像素暗房</a>
+    <a class="brand" href="${prefix}index.html"><span class="brand-mark" aria-hidden="true"></span>修圖練習室</a>
     <a class="muted header-link" href="${prefix}index.html#notes">筆記目錄</a>
   </div></header>
   <main id="main" class="wrap">${content}</main>
-  <footer class="site-footer"><div class="wrap bar"><span>像素暗房</span><span class="mono">PIXEL DARKROOM</span></div></footer>
+  <footer class="site-footer"><div class="wrap bar"><span>修圖練習室</span><span class="mono">PHOTO EDITING LAB</span></div></footer>
 </body>
 </html>
 `;
 
-const home = page('./', '像素暗房｜影像練習筆記', '給修圖初學者的互動筆記。', `
+const home = page('./', '修圖練習室｜影像練習筆記', '給修圖初學者的互動筆記。', `
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow mono">PIXEL DARKROOM</p>
-        <h1>像素暗房<span>.</span></h1>
+        <p class="eyebrow mono">PHOTO EDITING LAB</p>
+        <h1>修圖練習室<span>.</span></h1>
         <p class="intro">一張照片，多種觀看方式。</p>
         <p class="description">給修圖初學者的互動筆記。拖動滑桿，從亮度、對比和色彩，慢慢看懂同一張影像。</p>
         <a class="primary" href="#notes">探索筆記 <span aria-hidden="true">↓</span></a>
@@ -106,7 +106,7 @@ function article(note, index) {
   const adjacent = (neighbor, direction) => neighbor
     ? `<a href="../../${href(neighbor)}"><small>${direction}</small>${e(neighbor.title)}</a>`
     : '<span></span>';
-  return page('../../', note.title + '｜像素暗房', note.summary, `
+  return page('../../', note.title + '｜修圖練習室', note.summary, `
     <a class="back" href="../../index.html#notes">← 回筆記目錄</a>
     <header class="article-header">
       <p class="eyebrow mono">${e(note.english)} / ${note.category}</p>
