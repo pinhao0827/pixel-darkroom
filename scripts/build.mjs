@@ -43,7 +43,26 @@ assert(new Set(notes.map(note => note.order)).size === notes.length, '筆記的 
 
 const escaped = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 const e = value => String(value).replace(/[&<>"']/g, char => escaped[char]);
-const alt = '下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。';
+const photos = [
+  {
+    file: 'rainy-alley.jpg',
+    label: '雨中的紅燈籠',
+    caption: '下雨的夜晚，一條掛著紅燈籠的小街',
+    alt: '下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。'
+  },
+  {
+    file: 'sunny-fruit-stall.jpg',
+    label: '陽光下的水果攤',
+    caption: '陽光照在水果、竹籃和木窗上',
+    alt: '陽光照在柳橙和火龍果上，葉子的影子落在藍綠色木窗上。'
+  }
+];
+function photoFigure(photo, prefix, attributes = '') {
+  return `<figure${attributes}>
+    <img src="${prefix}assets/${photo.file}" alt="${photo.alt}" width="1536" height="1024">
+    <figcaption><span>${photo.caption}</span><span>AI 生成練習影像</span></figcaption>
+  </figure>`;
+}
 const href = note => 'notes/' + note.slug + '/index.html';
 const page = (prefix, title, description, content) => `<!doctype html>
 <html lang="zh-Hant">
@@ -73,14 +92,13 @@ const home = page('./', '修圖練習室｜影像練習筆記', '給修圖初學
       <div class="hero-copy">
         <p class="eyebrow mono">PHOTO EDITING LAB</p>
         <h1>修圖練習室<span>.</span></h1>
-        <p class="intro">一張照片，多種觀看方式。</p>
-        <p class="description">給修圖初學者的互動筆記。拖動滑桿，從亮度、對比和色彩，慢慢看懂同一張影像。</p>
+        <p class="intro">兩張照片，練習三種修圖方法。</p>
+        <p class="description">從下雨的小街到陽光下的水果攤，試試同一個調整在白天和夜晚有什麼差別。</p>
         <a class="primary" href="#notes">探索筆記 <span aria-hidden="true">↓</span></a>
       </div>
-      <figure class="hero-photo">
-        <img src="./assets/rainy-alley.jpg" alt="${alt}" width="1536" height="1024">
-        <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
-      </figure>
+      <div class="hero-photos">
+        ${photos.map(photo => photoFigure(photo, './')).join('')}
+      </div>
     </section>
     <section id="notes" class="catalog" aria-labelledby="catalog-title">
       <div class="catalog-head">
@@ -114,12 +132,15 @@ function article(note, index) {
       <p class="description">${e(note.summary)}</p>
     </header>
     <section class="lab" data-lab="${lab.filter}" aria-labelledby="lab-title">
-      <figure>
-        <img src="../../assets/rainy-alley.jpg" alt="${alt}" width="1536" height="1024">
-        <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
-      </figure>
+      <div class="lab-photos">
+        ${photos.map((photo, index) => photoFigure(photo, '../../',
+          ' data-practice-photo="' + photo.file + '"' + (index === 0 ? '' : ' hidden'))).join('')}
+      </div>
       <div class="controls">
         <h2 id="lab-title">動手比較</h2>
+        <div class="filters photo-options" role="group" aria-label="選擇練習照片">
+          ${photos.map((photo, index) => `<button type="button" data-photo="${photo.file}" aria-pressed="${index === 0}">${photo.label}</button>`).join('')}
+        </div>
         <div class="filters" role="group" aria-label="比較影像">
           <button type="button" data-view="original" aria-pressed="false">原圖</button>
           <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
@@ -144,7 +165,7 @@ function article(note, index) {
 
 const files = new Map([['index.html', home], ['.nojekyll', '']]);
 for (const [index, note] of notes.entries()) files.set(href(note), article(note, index));
-for (const asset of ['style.css', 'app.js', 'rainy-alley.jpg']) {
+for (const asset of ['style.css', 'app.js', ...photos.map(photo => photo.file)]) {
   files.set('assets/' + asset, readFileSync(root + 'assets/' + asset));
 }
 
