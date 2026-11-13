@@ -60,7 +60,7 @@ const photos = [
 function photoFigure(photo, prefix, attributes = '') {
   return `<figure${attributes}>
     <img src="${prefix}assets/${photo.file}" alt="${photo.alt}" width="1536" height="1024">
-    <figcaption><span>${photo.caption}</span><span>AI 生成練習影像</span></figcaption>
+    <figcaption><span>${attributes ? photo.caption : photo.label}</span><span>AI 生成</span></figcaption>
   </figure>`;
 }
 const href = note => 'notes/' + note.slug + '/index.html';
@@ -70,7 +70,7 @@ const page = (prefix, title, description, content) => `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${e(description)}">
-  <meta name="theme-color" content="#11100f">
+  <meta name="theme-color" content="#f8f7f3">
   <title>${e(title)}</title>
   <link rel="stylesheet" href="${prefix}assets/style.css">
   <script defer src="${prefix}assets/app.js"></script>
@@ -82,7 +82,7 @@ const page = (prefix, title, description, content) => `<!doctype html>
     <a class="muted header-link" href="${prefix}index.html#notes">筆記目錄</a>
   </div></header>
   <main id="main" class="wrap">${content}</main>
-  <footer class="site-footer"><div class="wrap bar"><span>修圖練習室</span><span class="mono">PHOTO EDITING LAB</span></div></footer>
+  <footer class="site-footer"><div class="wrap bar"><span>修圖練習室</span><a class="header-link" href="${prefix}index.html#notes">瀏覽筆記</a></div></footer>
 </body>
 </html>
 `;
@@ -90,11 +90,9 @@ const page = (prefix, title, description, content) => `<!doctype html>
 const home = page('./', '修圖練習室｜影像練習筆記', '給修圖初學者的互動筆記。', `
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow mono">PHOTO EDITING LAB</p>
-        <h1>修圖練習室<span>.</span></h1>
-        <p class="intro">兩張照片，練習三種修圖方法。</p>
-        <p class="description">從下雨的小街到陽光下的水果攤，試試同一個調整在白天和夜晚有什麼差別。</p>
-        <a class="primary" href="#notes">探索筆記 <span aria-hidden="true">↓</span></a>
+        <h1>修圖練習室</h1>
+        <p class="description">選一篇筆記，動手調亮度、對比或飽和度。用兩張照片試試看，同樣的數值會帶來什麼變化。</p>
+        <a class="primary" href="#notes">開始練習 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-photos">
         ${photos.map(photo => photoFigure(photo, './')).join('')}
@@ -102,18 +100,20 @@ const home = page('./', '修圖練習室｜影像練習筆記', '給修圖初學
     </section>
     <section id="notes" class="catalog" aria-labelledby="catalog-title">
       <div class="catalog-head">
-        <h2 id="catalog-title">練習筆記</h2>
-        <p id="result-count" aria-live="polite">${notes.length} 篇筆記</p>
-      </div>
-      <div class="filters" role="group" aria-label="筆記分類">
-        <button type="button" data-category-filter="" aria-pressed="true">全部</button>
-        ${categories.filter(category => notes.some(note => note.category === category)).map(category =>
-          `<button type="button" data-category-filter="${category}" aria-pressed="false">${category}</button>`).join('')}
+        <div class="catalog-title">
+          <h2 id="catalog-title">練習筆記</h2>
+          <p id="result-count" aria-live="polite">${notes.length} 篇筆記</p>
+        </div>
+        <div class="filters" role="group" aria-label="筆記分類">
+          <button type="button" data-category-filter="" aria-pressed="true">全部</button>
+          ${categories.filter(category => notes.some(note => note.category === category)).map(category =>
+            `<button type="button" data-category-filter="${category}" aria-pressed="false">${category}</button>`).join('')}
+        </div>
       </div>
       <div class="card-grid">
         ${notes.map(note => `<article class="card" data-category="${note.category}">
-          <p class="eyebrow mono">${e(note.english)} <span> / </span> ${note.category}</p>
           <h3><a href="./${href(note)}">${e(note.title)}<span aria-hidden="true">↗</span></a></h3>
+          <p class="eyebrow">${e(note.english)} <span> / </span> ${note.category}</p>
           <p class="description">${e(note.summary)}</p>
         </article>`).join('')}
       </div>
@@ -127,7 +127,7 @@ function article(note, index) {
   return page('../../', note.title + '｜修圖練習室', note.summary, `
     <a class="back" href="../../index.html#notes">← 回筆記目錄</a>
     <header class="article-header">
-      <p class="eyebrow mono">${e(note.english)} / ${note.category}</p>
+      <p class="eyebrow">${e(note.english)} / ${note.category}</p>
       <h1>${e(note.title)}</h1>
       <p class="description">${e(note.summary)}</p>
     </header>
@@ -138,17 +138,30 @@ function article(note, index) {
       </div>
       <div class="controls">
         <h2 id="lab-title">動手比較</h2>
-        <div class="filters photo-options" role="group" aria-label="選擇練習照片">
-          ${photos.map((photo, index) => `<button type="button" data-photo="${photo.file}" aria-pressed="${index === 0}">${photo.label}</button>`).join('')}
+        <div class="control-group">
+          <p class="control-label" id="photo-label">選照片</p>
+          <div class="filters" role="group" aria-labelledby="photo-label">
+            ${photos.map((photo, index) => `<button type="button" data-photo="${photo.file}" aria-pressed="${index === 0}">${photo.label}</button>`).join('')}
+          </div>
         </div>
-        <div class="filters" role="group" aria-label="比較影像">
-          <button type="button" data-view="original" aria-pressed="false">原圖</button>
-          <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
+        <div class="control-group">
+          <p class="control-label" id="compare-label">比較前後</p>
+          <div class="filters" role="group" aria-labelledby="compare-label">
+            <button type="button" data-view="original" aria-pressed="false">原圖</button>
+            <button type="button" data-view="adjusted" aria-pressed="true">調整</button>
+          </div>
         </div>
-        <div class="slider-line"><label for="setting">${e(note.title)}</label><output for="setting">${lab.initial}%</output></div>
-        <input id="setting" type="range" min="${lab.min}" max="${lab.max}" value="${lab.initial}">
-        <p class="muted baseline">原圖基準 100%</p>
-        <button type="button" data-reset>重設</button>
+        <div class="control-group">
+          <div class="slider-line">
+            <label for="setting">${e(note.title)}</label>
+            <output for="setting">${lab.initial}%</output>
+          </div>
+          <input id="setting" type="range" min="${lab.min}" max="${lab.max}" value="${lab.initial}">
+          <div class="control-footer">
+            <p class="muted baseline">100% 是原圖</p>
+            <button type="button" data-reset>重設</button>
+          </div>
+        </div>
         <noscript><p>啟用 JavaScript 即可調整影像。</p></noscript>
       </div>
     </section>
