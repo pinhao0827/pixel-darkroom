@@ -43,7 +43,7 @@ assert(new Set(notes.map(note => note.order)).size === notes.length, '筆記的 
 
 const escaped = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 const e = value => String(value).replace(/[&<>"']/g, char => escaped[char]);
-const alt = '雨夜巷弄，紅燈籠和店內暖光倒映在濕地上。';
+const alt = '下雨的夜晚，紅燈籠和店裡的燈光倒映在小街的路面上。';
 const href = note => 'notes/' + note.slug + '/index.html';
 const page = (prefix, title, description, content) => `<!doctype html>
 <html lang="zh-Hant">
@@ -79,7 +79,7 @@ const home = page('./', '修圖練習室｜影像練習筆記', '給修圖初學
       </div>
       <figure class="hero-photo">
         <img src="./assets/rainy-alley.jpg" alt="${alt}" width="1536" height="1024">
-        <figcaption><span>雨夜巷弄</span><span>AI 生成練習影像</span></figcaption>
+        <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
       </figure>
     </section>
     <section id="notes" class="catalog" aria-labelledby="catalog-title">
@@ -116,7 +116,7 @@ function article(note, index) {
     <section class="lab" data-lab="${lab.filter}" aria-labelledby="lab-title">
       <figure>
         <img src="../../assets/rainy-alley.jpg" alt="${alt}" width="1536" height="1024">
-        <figcaption><span>雨夜巷弄</span><span>AI 生成練習影像</span></figcaption>
+        <figcaption><span>下雨的夜晚，一條掛著紅燈籠的小街</span><span>AI 生成練習影像</span></figcaption>
       </figure>
       <div class="controls">
         <h2 id="lab-title">動手比較</h2>
